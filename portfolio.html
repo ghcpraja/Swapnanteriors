@@ -668,15 +668,17 @@ footer{background:var(--off-white);color:var(--muted);padding:60px 0 30px;border
   padding: 100px 40px;
   max-width: 1400px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
+  column-count: 3;
+  column-gap: 24px;
 }
 
 .g-img { 
-  width: 100%; aspect-ratio: 1; cursor: pointer; 
+  width: 100%; cursor: pointer; 
   transition: opacity 0.8s ease, transform 0.4s var(--ease); 
   opacity:0; transform:translateY(30px); 
+  margin-bottom: 24px;
+  break-inside: avoid;
+  display: inline-block;
 }
 .g-img.visible { opacity:1; transform:translateY(0); }
 .g-img:hover { transform:translateY(-6px); box-shadow:0 20px 40px rgba(0,0,0,0.1); z-index:2; position:relative; }
@@ -684,7 +686,11 @@ footer{background:var(--off-white);color:var(--muted);padding:60px 0 30px;border
 
 @media (max-width: 900px) {
   .gallery-hero { padding: 140px 24px 50px; }
-  .gallery-grid { padding: 60px 24px; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .gallery-grid { padding: 60px 24px; column-gap: 16px; column-count: 2; }
+  .g-img { margin-bottom: 16px; }
+}
+@media (max-width: 500px) {
+  .gallery-grid { column-count: 1; padding: 40px 16px; }
 }
 
 /* Lightbox UI */
