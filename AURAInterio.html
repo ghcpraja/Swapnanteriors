@@ -323,25 +323,27 @@ button{font-family:inherit;cursor:none}
 
 /* ── Grid layout ── */
 .pgrid{
-  display:grid;
-  grid-template-columns:repeat(12,1fr);
-  grid-auto-rows:minmax(60px, 8vw);
-  grid-auto-flow:dense;
-  gap:24px;
+  column-count: 3;
+  column-gap: 24px;
+  padding: 0 52px;
 }
-/* Dynamic layout slots */
-.pg-large{grid-column:span 6;grid-row:span 8}
-.pg-med{grid-column:span 6;grid-row:span 5}
-.pg-small{grid-column:span 3;grid-row:span 6}
 
 /* Card */
-.proj-card{position:relative;overflow:hidden;background:#e8e0d6;border-radius:4px}
-.proj-card .bg{
-  position:absolute;inset:0;
-  background-size:cover;background-position:center;
-  transition:transform 1.2s var(--ease);
+.proj-card{
+  width: 100%;
+  display: inline-block;
+  position:relative;
+  overflow:hidden;
+  background:#e8e0d6;
+  border-radius:4px;
+  break-inside: avoid;
+  margin-bottom: 24px;
 }
-.proj-card:hover .bg{transform:scale(1.08)}
+.proj-card .bg-img {
+  width: 100%; height: auto; display: block;
+  transition: transform 1.2s var(--ease);
+}
+.proj-card:hover .bg-img {transform:scale(1.08)}
 .proj-ov{
   position:absolute;inset:0;
   background:linear-gradient(170deg,transparent 30%,rgba(15,10,5,.82) 100%);
@@ -649,7 +651,7 @@ footer{background:var(--off-white);color:var(--muted);padding:60px 0 30px;border
 
   .about-strip .wrap{grid-template-columns:1fr;gap:36px;padding:72px 28px}
   .about-strip{padding:0}
-  .pgrid{display:grid;grid-template-columns:repeat(12, 1fr);grid-auto-rows:8vw;grid-auto-flow:dense;gap:24px;padding:0 52px;position:relative}
+  .pgrid{column-count: 2; padding:0 32px; column-gap: 20px;}
   .svc-grid{grid-template-columns:1fr}
   .studio-sec{grid-template-columns:1fr}
   .studio-img{min-height:340px}
@@ -665,8 +667,7 @@ footer{background:var(--off-white);color:var(--muted);padding:60px 0 30px;border
 @media(max-width:640px){
   .hero-title{font-size:68px;letter-spacing:.16em}
   .hero-btns{flex-direction:column}
-  .pgrid{grid-template-columns:1fr}
-  .proj-card{min-height:60vh}
+  .pgrid{column-count: 1; padding: 0 16px;}
   .proc-steps{grid-template-columns:1fr}
   .stats-row{grid-template-columns:1fr}
   .stat{border-right:none;border-bottom:1px solid var(--border)}

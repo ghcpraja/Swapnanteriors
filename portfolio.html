@@ -702,8 +702,9 @@ footer{background:var(--off-white);color:var(--muted);padding:60px 0 30px;border
 }
 .lightbox.show { opacity: 1; pointer-events: all; }
 .lightbox img {
-  width: 85vw; height: 85vh;
-  object-fit: cover; object-position: center;
+  max-width: 90vw; max-height: 90vh;
+  width: auto; height: auto;
+  object-fit: contain; object-position: center;
   box-shadow: 0 40px 80px rgba(0,0,0,0.4);
   border-radius: 2px;
 }
